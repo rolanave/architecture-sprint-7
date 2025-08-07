@@ -1,6 +1,5 @@
 #!/bin/bash
 
-certificate_data="LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLSS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
 server=`minikube ssh 'sudo cat /etc/kubernetes/admin.conf | grep server' | awk '{print $2}'`
 cad=`minikube ssh 'sudo cat /etc/kubernetes/admin.conf | grep certificate-authority-data' | awk '{print $2}'`
 clusterName=`minikube ssh 'sudo cat /etc/kubernetes/admin.conf | grep -m 1 name' | tr -d "\r" | awk '{print $2}'`
