@@ -1,0 +1,30 @@
+# role.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: my-project-prod
+  name: product-developer
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"] 
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: my-project-prod
+  name: product-delivery
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["create", "update", "patch", "get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: my-project-dev
+  name: product-developer
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["create", "update", "patch", "get", "list", "watch"]
