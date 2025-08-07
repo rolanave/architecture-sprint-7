@@ -1,0 +1,85 @@
+# rolebinding for Users
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: product-devops
+  namespace: my-project-prod
+subjects:
+- kind: User
+  name: andy_dev
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: product-developer
+  apiGroup: rbac.authorization.k8s.io 
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: product-devops
+  namespace: my-project-dev
+subjects:
+- kind: User
+  name: andy_dev
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: product-developer
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: delivery-devops
+  namespace: my-project-prod
+subjects:
+- kind: User 
+  name: kate_dev
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: product-delivery
+  apiGroup: rbac.authorization.k8s.io
+---
+# rolebinding for Groups
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: product-devops
+  namespace: my-project-prod
+subjects:
+- kind: Group
+  name: development
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: product-developer
+  apiGroup: rbac.authorization.k8s.io 
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: product-devops
+  namespace: my-project-dev
+subjects:
+- kind: Group
+  name: development
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: product-developer
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: delivery-devops
+  namespace: my-project-prod
+subjects:
+- kind: Group
+  name: prodDelivery
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: product-delivery
+  apiGroup: rbac.authorization.k8s.io
